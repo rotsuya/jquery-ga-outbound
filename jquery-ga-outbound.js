@@ -5,14 +5,16 @@
         };
         options = $.extend(true, {}, defaults, options);
         return this.filter(function() {
+            var getOrigin = function(loc) {
+                return loc['protocol'] + '//' + loc['hostname'] + (loc['port'] ? ':' + loc['port'] : '');
+            };
             var link = this;
-            var origin = location.origin
-                ? location.origin
-                : (location.protocol + "//" + location.hostname + (location.port ? ':' + location.port : ''));
+            var linkOrigin = link.origin ? link.origin : getOrigin(link);
+            var locationOrigin = location.origin ? location.origin : getOrigin(location);
             if (link.tagName.toLowerCase() !== 'a') {
                 return false;
             }
-            if (link.origin === origin) {
+            if (linkOrigin === locationOrigin) {
                 return false;
             }
             $(link).on('click', function (event) {
