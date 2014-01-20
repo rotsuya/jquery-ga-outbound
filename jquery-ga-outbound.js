@@ -1,7 +1,8 @@
 ;(function($) {
     $.fn.gaOutbound = function(options) {
         var defaults = {
-            timeout: 250
+            timeout: 250,
+            permitSameOrigin: false
         };
         options = $.extend(true, {}, defaults, options);
         return this.filter(function() {
@@ -14,7 +15,7 @@
             if (link.tagName.toLowerCase() !== 'a') {
                 return false;
             }
-            if (linkOrigin === locationOrigin) {
+            if (!options.permitSameOrigin && linkOrigin === locationOrigin) {
                 return false;
             }
             $(link).on('click', function (event) {
