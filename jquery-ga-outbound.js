@@ -8,7 +8,11 @@
         options = $.extend(true, {}, defaults, options);
         return this.filter(function() {
             var getOrigin = function(loc) {
-                return loc['protocol'] + '//' + loc['hostname'] + (loc['port'] ? ':' + loc['port'] : '');
+                var port = loc.port;
+                if ((loc.protocol === 'http:' && loc.port === 80) || (loc.protocol === 'https:' && loc.port === 443)) {
+                    port = '';
+                }
+                return loc.protocol + '//' + loc.hostname + port;
             };
             var link = this;
             var linkOrigin = link.origin ? link.origin : getOrigin(link);
