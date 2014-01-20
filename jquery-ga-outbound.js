@@ -33,13 +33,21 @@
                 event.preventDefault();
                 var url = $elem.attr('href');
                 var title = $elem.text();
-                if (options.debug && window.console && console.time) {
-                    console.time('jquery-ga-outbound');
+                if (options.debug) {
+                    if (window.console && console.time) {
+                        console.time('jquery-ga-outbound');
+                    }
                 }
                 var timer = setTimeout(function() {
-                    if (options.debug && window.console && console.timeEnd) {
-                        console.timeEnd('jquery-ga-outbound');
-                        console.log('fired set timeout callback.');
+                    if (options.debug) {
+                        if (window.console && console.timeEnd) {
+                            console.timeEnd('jquery-ga-outbound');
+                        }
+                        if (window.console && console.log) {
+                            console.log('fired set timeout callback.');
+                        } else {
+                            alert('fired set timeout callback.');
+                        }
                     }
                     location.href = url;
                 }, options.timeout);
@@ -50,9 +58,15 @@
                     eventLabel: title || url,
                     hitCallback: function() {
                         clearTimeout(timer);
-                        if (options.debug && window.console && console.timeEnd) {
-                            console.timeEnd('jquery-ga-outbound');
-                            console.log('fired ga hit callback.');
+                        if (options.debug) {
+                            if (window.console && console.timeEnd) {
+                                console.timeEnd('jquery-ga-outbound');
+                            }
+                            if (window.console && console.log) {
+                                console.log('fired ga hit callback.');
+                            } else {
+                                alert('fired set timeout callback.');
+                            }
                         }
                         location.href = url;
                     }
