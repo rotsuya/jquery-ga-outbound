@@ -2,7 +2,8 @@
     $.fn.gaOutbound = function(options) {
         var defaults = {
             timeout: 250,
-            permitSameOrigin: false
+            permitSameOrigin: false,
+            debug: false
         };
         options = $.extend(true, {}, defaults, options);
         return this.filter(function() {
@@ -18,13 +19,20 @@
             if (!options.permitSameOrigin && linkOrigin === locationOrigin) {
                 return false;
             }
-            $(link).on('click', function (event) {
+            $(link).click(function (event) {
                 var elem = this;
                 var $elem = $(elem);
                 event.preventDefault();
                 var url = $elem.attr('href');
                 var title = $elem.text();
+                if (options.debug) {
+                    console.time('jquery-ga-outbound');
+                }
                 var timer = setTimeout(function() {
+                    if (options.debug) {
+                        console.timeEnd('jquery-ga-outbound');
+                        console.log('fired set timeout callback.');
+                    }
                     location.href = url;
                 }, options.timeout);
                 ga('send', {
@@ -34,6 +42,10 @@
                     eventLabel: title || url,
                     hitCallback: function() {
                         clearTimeout(timer);
+                        if (options.debug) {
+                            console.timeEnd('jquery-ga-outbound');
+                            console.log('fired ga hit callback.');
+                        }
                         location.href = url;
                     }
                 });
