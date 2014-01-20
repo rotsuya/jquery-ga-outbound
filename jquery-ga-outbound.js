@@ -9,8 +9,12 @@
         return this.filter(function() {
             var getOrigin = function(loc) {
                 var port = loc.port;
-                if ((loc.protocol === 'http:' && loc.port === 80) || (loc.protocol === 'https:' && loc.port === 443)) {
+                if ((loc.protocol === 'http:' && port === '80')
+                    || (loc.protocol === 'https:' && loc.port === '443')) {
                     port = '';
+                }
+                if (port) {
+                    port = ':' + port;
                 }
                 return loc.protocol + '//' + loc.hostname + port;
             };
