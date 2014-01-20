@@ -9,7 +9,7 @@
             var origin = location.origin
                 ? location.origin
                 : (location.protocol + "//" + location.hostname + (location.port ? ':' + location.port : ''));
-            if (link.tagName.toLowerCase !== 'a') {
+            if (link.tagName.toLowerCase() !== 'a') {
                 return false;
             }
             if (link.origin === origin) {
