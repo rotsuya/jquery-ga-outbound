@@ -33,11 +33,11 @@
                 event.preventDefault();
                 var url = $elem.attr('href');
                 var title = $elem.text();
-                if (options.debug) {
+                if (options.debug && window.console && console.time) {
                     console.time('jquery-ga-outbound');
                 }
                 var timer = setTimeout(function() {
-                    if (options.debug) {
+                    if (options.debug && window.console && console.timeEnd) {
                         console.timeEnd('jquery-ga-outbound');
                         console.log('fired set timeout callback.');
                     }
@@ -50,7 +50,7 @@
                     eventLabel: title || url,
                     hitCallback: function() {
                         clearTimeout(timer);
-                        if (options.debug) {
+                        if (options.debug && window.console && console.timeEnd) {
                             console.timeEnd('jquery-ga-outbound');
                             console.log('fired ga hit callback.');
                         }
