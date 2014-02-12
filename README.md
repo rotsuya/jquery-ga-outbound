@@ -1,7 +1,7 @@
 # jquery-ga-outbound
 
 Google Analyticsの新しいトラッキングコード(ユニバーサルアナリティクス、analytics.js)で、
-外部リンクをカスタムイベントとして記録するための、jQueryプラグインです。
+外部リンクをイベントとして記録するための、jQueryプラグインです。
 
 ## 使い方
 
@@ -9,13 +9,15 @@ Google Analyticsの新しいトラッキングコード(ユニバーサルアナ
 1. クリックを記録したいリンク(`<a>`タグ)のjQueryオブジェクトに対して、`$.fn.gaOutbound()`メソッドを呼び出してください。
 引数に、JavaScriptオブジェクトの形式で、オプションを指定することができます。
 
-## カスタムイベントのログの確認方法
+## Google Analyticsでの確認方法
 
 1. Google Analyticsで「行動」➔「イベント」➔「上位のイベント」の順にクリックします。
 1. イベントカテゴリに表示される、「Outbound Links」をクリックします。
 1. 外部リンクのクリック数が、URL別に表示されます。
 1. プライマリディメンションの「イベントラベル」をクリックします。
 1. 外部リンクのクリック数が、リンク文字列別に表示されます。
+
+Google Analyticsで確認できるまでに数時間かかることがあります。
 
 ## デモ
 
@@ -35,9 +37,9 @@ Google Analyticsの新しいトラッキングコード(ユニバーサルアナ
  * デバッグモードを指定します。コンソールにデバッグ情報を出力したい場合は`true`を指定します。
 デフォルト値は`false`です。
 
-## 例
+## 利用例
 
-```javascript
+```html
 <a href="http://www.google.com/" class="outbound">Google</a>
 <script src="jquery-1.10.2.min.js"></script>
 <script src="jquery-ga-outbound.js"></script>
