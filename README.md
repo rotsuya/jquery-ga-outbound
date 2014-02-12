@@ -5,24 +5,24 @@ Google Analyticsの新しいトラッキングコード(ユニバーサルアナ
 
 ## 使い方
 
-jQueryとこのプラグインを`script`タグで読み込んでください。
-
-リンクを補足したいjQueryオブジェクトに対して、`outbound()`メソッドを呼び出してください。
+1. jQueryとこのプラグインを`<script>`タグで読み込んでください。
+1. リンクを補足したいjQueryオブジェクトに対して、`$.fn.gaOutbound()`メソッドを呼び出してください。
 引数に、JavaScriptオブジェクトの形式で、オプションを指定することができます。
 
 ## デモ
 
 [jquery-ga-outbound Demo](http://rotsuya.github.io/jquery-ga-outbound)
+コンソールで動作を確認することができます。
 
 ## オプション
 
-* int `timeout`
+* `timeout` (int)
  * Google Analyticsから応答がない場合に、タイムアウトして画面遷移する時間をミリ秒で指定します。
 デフォルト値は`250`です。
-* bool `permitSameOrigin`
+* `permitSameOrigin` (bool)
  * リンク先が同一オリジンの場合はカスタムイベントを記録しませんが、強制的に記録したい場合は`true`を指定します。
 デフォルト値は`false`です。
-* bool `debug`
+* `debug` (bool)
  * デバッグモードを指定します。コンソールにデバッグ情報を出力したい場合は`true`を指定します。
 デフォルト値は`false`です。
 
