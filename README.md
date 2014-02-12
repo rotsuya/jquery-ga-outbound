@@ -11,7 +11,7 @@ Google Analyticsの新しいトラッキングコード(ユニバーサルアナ
 
 ## デモ
 
-[jquery-ga-outbound Demo](http://rotsuya.github.io/jquery-ga-outbound)
+[jquery-ga-outbound Demo](http://rotsuya.github.io/jquery-ga-outbound)    
 コンソールで動作を確認することができます。
 
 ## オプション
