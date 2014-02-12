@@ -5,7 +5,7 @@ Google Analyticsの新しいトラッキングコード(ユニバーサルアナ
 
 ## 使い方
 
-1. jQueryとこのプラグインを`<script>`タグで読み込んでください。
+1. jQuery(1.1以上)と`jquery-ga-outbound.js`を`<script>`タグで読み込んでください。
 1. リンクを補足したいjQueryオブジェクトに対して、`$.fn.gaOutbound()`メソッドを呼び出してください。
 引数に、JavaScriptオブジェクトの形式で、オプションを指定することができます。
 
