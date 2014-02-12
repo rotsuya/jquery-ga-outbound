@@ -33,6 +33,7 @@
                 event.preventDefault();
                 var url = $elem.attr('href');
                 var title = $elem.text();
+                var alt = $elem.children('img').eq(0).attr('alt');
                 if (options.debug) {
                     if (window.console && console.time) {
                         console.time('jquery-ga-outbound');
@@ -55,7 +56,7 @@
                     hitType: 'event',
                     eventCategory: 'Outbound Links',
                     eventAction: url,
-                    eventLabel: title || url,
+                    eventLabel: title || alt || url,
                     hitCallback: function() {
                         clearTimeout(timer);
                         if (options.debug) {
